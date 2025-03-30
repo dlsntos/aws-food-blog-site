@@ -15,6 +15,10 @@
                 <input type="password" name="password" placeholder="Password" required>
                 <button type="submit">Login</button>
             </form>
+            <div class="signup-link">
+                <span>Don't have an account?</span>
+                <a href="signup.php">Sign up</a>
+            </div>
         </div>
     </div>
 </body>
