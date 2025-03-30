@@ -6,6 +6,8 @@
     <title>Login</title>
 </head>
 <body>
-    <div id="login-container"></div>
+    <div id="login-container">
+        <div id="forms-container"></div>
+    </div>
 </body>
 </html>
