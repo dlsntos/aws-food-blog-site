@@ -1,0 +1,164 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f5f5f5;
+    height: 100vh;
+    margin: 0 !important; 
+    padding: 0 !important;
+}
+
+/* Ensure space for the fixed header */
+#show-all-blogs-container {
+    height: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    text-align: center;
+    padding-top: 80px; /* Push content below the fixed header */
+    padding-bottom: 80px; /* Ensures pagination isn't hidden */
+}
+
+/* Post Container */
+.post-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+    width: 100%;
+    margin-top: 10px;
+}
+
+.post-link {
+    text-decoration: none;
+    color: inherit;
+    display: block;
+}
+
+/* Responsive Post Cards */
+.post {
+    width: 300px;
+    height: 350px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 15px;
+    background-color: #fff;
+    transition: transform 0.2s ease-in-out, background-color 0.2s ease-in-out;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    text-align: center;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.post:hover {
+    transform: scale(1.03);
+    background-color: #f0f0f0;
+}
+
+.post img {
+    width: 100%;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 8px;
+}
+
+.post h3 {
+    font-size: 18px;
+    margin: 10px 0;
+    font-weight: bold;
+}
+
+.post-meta {
+    font-size: 14px;
+    color: #777;
+}
+
+.post p {
+    flex-grow: 1;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    white-space: normal;
+}
+
+/* Pagination Container */
+.pagination {
+    width: 100%;
+    text-align: center;
+    margin-top: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+    flex-wrap: wrap;
+    min-height: 50px; /* Prevent it from disappearing */
+    padding: 10px 0;
+}
+
+.pagination a {
+    text-decoration: none;
+    padding: 14px 20px;
+    border-radius: 8px;
+    font-size: 18px;
+    font-weight: bold;
+    background-color: #333;
+    color: white;
+    margin: 5px;
+    transition: background 0.3s ease, transform 0.2s;
+    display: inline-block;
+    min-width: 50px; /* Ensures visibility */
+    min-height: 40px;
+    text-align: center;
+}
+
+.pagination a:hover {
+    background-color: #555;
+    transform: scale(1.1);
+}
+
+.pagination a.active {
+    background-color: #007bff;
+    border: 2px solid #0056b3;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+}
+
+/* 📱 Mobile Responsive Styles */
+@media (max-width: 768px) {
+    #show-all-blogs-container {
+        padding-top: 20px; /* Adjust padding for mobile */
+    }
+
+    .post {
+        width: 90%;
+        height: auto; /* Allow it to adjust based on content */
+        padding: 12px;
+        min-height: 250px; /* Set a smaller minimum height */
+    }
+
+    .post img {
+        height: 120px; /* Reduce image height */
+    }
+
+    .post h3 {
+        font-size: 16px;
+    }
+
+    .post p {
+        -webkit-line-clamp: 2; /* Show fewer lines of text */
+    }
+    .pagination {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 10px;
+    }
+
+    .pagination a {
+        padding: 16px 22px; /* Bigger tap area */
+        font-size: 20px;
+        border-radius: 12px;
+    }
+}
