@@ -106,16 +106,16 @@
 <body>
     <header>
         <div class="logo">
-            <a href="../public/all_blogs.php">
+            <a href="all_blogs.php">
                 <img src="../assets/yumbuds_logo.png" alt="Yum Buds Logo"> <!-- Replace with your logo -->
             </a>
         </div>
         <nav>
             <ul id="nav-links">
-                <li><a href="../public/create_blog.php">New Blog</a></li>
-                <li><a href="../public/all_blogs.php">All Blogs</a></li>
-                <li><a href="../public/my_blogs.php">My Blogs</a></li>
-                <li><a href="../includes/logout.php">Log Out</a></li>
+                <li><a href="create_blog.php">New Blog</a></li>
+                <li><a href="all_blogs.php">All Blogs</a></li>
+                <li><a href="my_blogs.php">My Blogs</a></li>
+                <li><a href="logout.php">Log Out</a></li>
             </ul>
             <button class="menu-btn" onclick="toggleMenu()">☰</button>
         </nav>

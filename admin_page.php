@@ -1,6 +1,6 @@
 <?php
 session_start();
-include __DIR__ . '/../includes/check_login.php';
+include 'check_login.php';
 
 if (!isset($_SESSION["user_id"]) || !$_SESSION["is_admin"]) {
     header("Location: login.php");
@@ -188,11 +188,11 @@ $logs = $conn->query("SELECT username, action, timestamp FROM audit_logs ORDER B
             <?php endwhile; ?>
         </table>
 
-        <a href="../includes/logout.php" class="logout-btn">Logout</a>
+        <a href="logout.php" class="logout-btn">Logout</a>
     </div>
 
     <script>
-        fetch('../includes/get_login_data.php') // Fixed path
+        fetch('get_login_data.php') // Fixed path
             .then(response => response.json())
             .then(data => {
                 if (data.error) {

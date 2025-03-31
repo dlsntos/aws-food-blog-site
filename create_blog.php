@@ -1,7 +1,7 @@
 <?php
-include __DIR__ . '/../includes/config.php';
-include __DIR__ . '/../includes/check_login.php';
-include __DIR__ . '/../includes/header.php';
+include 'config.php';
+include 'check_login.php';
+include 'header.php';
 
 $user_id = $_SESSION["user_id"];
 $username = $_SESSION["username"]; // Assuming you store the username in session
@@ -45,7 +45,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['create_post'])) {
             $logStmt->close();
 
             $message = "Post created successfully!";
-            header("Location: ../public/all_blogs.php");
+            header("Location: all_blogs.php");
             exit();
         } else {
             $message = "Error creating post.";

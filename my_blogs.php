@@ -30,7 +30,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['delete_id'])) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>My Blogs</title>
-    <link rel="stylesheet" href="../assets/css/my_blogs.css">
+    <link rel="stylesheet" href="my_blogs.css">
 </head>
 
 <body>

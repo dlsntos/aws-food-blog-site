@@ -1,9 +1,9 @@
 <?php
 session_start(); // Start the session
-$servername = "localhost";//
-$username = "root";
-$password = "";
-$dbname = "sampleDB";
+$servername = "cloudcomfinaldb.czcwm0o0uhok.ap-southeast-1.rds.amazonaws.com";//
+$username = "FINALadmin";
+$password = "cloudcomfinalpassword";
+$dbname = "cloudcomfinaldb";
 
 $conn = new mysqli($servername, $username, $password, $dbname);
 

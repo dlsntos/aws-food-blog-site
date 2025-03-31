@@ -1,7 +1,7 @@
 <?php
-include __DIR__ . '/../includes/config.php';
-include __DIR__ . '/../includes/check_login.php';
-include __DIR__ . '/../includes/header.php';
+include __DIR__ . 'config.php';
+include __DIR__ . 'check_login.php';
+include __DIR__ . 'header.php';
 
 $user_id = $_SESSION["user_id"];
 $username = $_SESSION["username"];
@@ -34,7 +34,7 @@ $total_pages = ceil($total_posts / $limit);
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Blogs</title>
-    <link rel="stylesheet" href="../assets/css/all_blogs.css">
+    <link rel="stylesheet" href="all_blogs.css">
 </head>
 
 <body>
@@ -55,7 +55,7 @@ $total_pages = ceil($total_posts / $limit);
                         </p>
                         <p class="post-content"><?php echo nl2br(htmlspecialchars(substr($post['content'], 0, 100))); ?>...
                         </p>
-                        <a href="../public/view_post.php?id=<?php echo $post['id']; ?>" class="read-more">Read more →</a>
+                        <a href="view_post.php?id=<?php echo $post['id']; ?>" class="read-more">Read more →</a>
                     </div>
                 </a>
             <?php } ?>

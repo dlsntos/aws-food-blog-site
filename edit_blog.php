@@ -1,11 +1,11 @@
 <?php
-include __DIR__ . '/../includes/config.php';
-include __DIR__ . '/../includes/check_login.php';
+include __DIR__ . 'config.php';
+include __DIR__ . 'check_login.php';
 
 $user_id = $_SESSION["user_id"];
 
 if (!isset($_GET['id'])) {
-    header("Location: ../public/all_blogs.php");
+    header("Location: all_blogs.php");
     exit();
 }
 
