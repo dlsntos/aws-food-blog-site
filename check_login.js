@@ -1,10 +1,10 @@
-fetch("../includes/check_login.php", {
+fetch("check_login.php", {
   credentials: "include",
 })
   .then((response) => response.json())
   .then((data) => {
     if (!data.logged_in) {
-      window.location.href = "../public/login.php";
+      window.location.href = "login.php";
     }
   })
   .catch((error) => {

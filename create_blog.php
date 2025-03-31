@@ -20,15 +20,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['create_post'])) {
         // Handle image upload
         if (!empty($_FILES['image']['name'])) {
             $target_dir = __DIR__ . "/uploads/";
-            if (!is_dir($target_dir)) {
-                mkdir($target_dir, 0755, true);
-            }
-
+            if (!is_dir($target_dir)) mkdir($target_dir, 0755, true);
+    
             $target_file = $target_dir . basename($_FILES["image"]["name"]);
             if (move_uploaded_file($_FILES["image"]["tmp_name"], $target_file)) {
                 $image_url = "/uploads/" . basename($_FILES["image"]["name"]);
             } else {
-                $message = "Error uploading file.";
+                echo "Error uploading file. Error code: " . $_FILES["image"]["error"];
             }
         }
 
