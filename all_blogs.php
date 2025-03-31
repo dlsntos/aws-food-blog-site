@@ -1,7 +1,7 @@
 <?php
-include __DIR__ . 'config.php';
-include __DIR__ . 'check_login.php';
-include __DIR__ . 'header.php';
+include 'config.php';
+include 'check_login.php';
+include 'header.php';
 
 $user_id = $_SESSION["user_id"];
 $username = $_SESSION["username"];

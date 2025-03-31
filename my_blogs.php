@@ -1,7 +1,7 @@
 <?php
-include __DIR__ . '/../includes/config.php';
-include __DIR__ . '/../includes/check_login.php';
-include __DIR__ . '/../includes/header.php';
+include 'config.php';
+include 'check_login.php';
+include 'header.php';
 
 if (!isset($_SESSION["user_id"])) {
     header("Location: login.php");

@@ -35,9 +35,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
             // Redirect based on admin status
             if ($is_admin) {
-                header("Location: ../admin/admin_page.php");
+                header("Location: admin_page.php");
             } else {
-                header("Location: ../public/all_blogs.php");
+                header("Location: all_blogs.php");
             }
             exit();
         } else {
