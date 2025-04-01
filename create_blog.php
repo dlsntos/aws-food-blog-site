@@ -43,7 +43,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['create_post'])) {
             $logStmt->close();
 
             $message = "Post created successfully!";
-            header("Location: all_blogs.php");
+            echo '<script>window.location.href = "all_blogs.php";</script>';
             exit();
         } else {
             $message = "Error creating post.";

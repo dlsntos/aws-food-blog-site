@@ -35,7 +35,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['delete_id'])) {
         $logStmt->close();
     }
     $stmt->close();
-    header("Location: my_blogs.php");
+    echo '<script>window.location.href = "my_blogs.php";</script>';
     exit();
 }
 ?>
