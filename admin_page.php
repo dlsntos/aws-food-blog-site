@@ -7,7 +7,7 @@ if (!isset($_SESSION["user_id"]) || !$_SESSION["is_admin"]) {
     exit();
 }
 
-$conn = new mysqli("localhost", "root", "", "sampleDB");
+$conn = new mysqli("cloudcomfinaldb.czcwm0o0uhok.ap-southeast-1.rds.amazonaws.com", "FINALadmin", "cloudcomfinalpassword", "cloudcomfinaldb");
 if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }

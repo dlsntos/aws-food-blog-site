@@ -1,6 +1,6 @@
 <?php
-include __DIR__ . 'config.php';
-include __DIR__ . 'check_login.php';
+include 'config.php';
+include 'check_login.php';
 
 $user_id = $_SESSION["user_id"];
 
@@ -30,11 +30,23 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     if (strlen($new_content) < 400) {
         $error_message = "Content must be at least 400 characters!";
     } else {
+        $stmt = $conn->prepare("SELECT title FROM posts WHERE id = ?");
+        $stmt->bind_param("i", $post_id);
+        $stmt->execute();
+        $stmt->bind_result($old_title);
+        $stmt->fetch();
+        $stmt->close();
+
         $stmt = $conn->prepare("UPDATE posts SET title = ?, content = ? WHERE id = ? AND user_id = ?");
         $stmt->bind_param("ssii", $new_title, $new_content, $post_id, $user_id);
 
         if ($stmt->execute()) {
-            header("Location: ../public/all_blogs.php");
+            $logStmt = $conn->prepare("INSERT INTO audit_logs (username, action, timestamp) VALUES (?, ?, NOW())");
+            $action = "Edited Post: $old_title → $new_title"; // Logs old and new title
+            $logStmt->bind_param("ss", $username, $action);
+            $logStmt->execute();
+            $logStmt->close();
+            header("Location: all_blogs.php");
             exit();
         } else {
             $error_message = "Error updating post.";
@@ -135,7 +147,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
             <button type="submit">Update Post</button>
         </form>
-        <a href="allBlogs.php" class="back-btn">Back to Blogs</a>
+        <a href="all_blogs.php" class="back-btn">Back to Blogs</a>
     </div>
     <script>
         function updateCounter(textarea) {

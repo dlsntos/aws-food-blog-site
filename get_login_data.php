@@ -1,7 +1,7 @@
 <?php
 header("Content-Type: application/json");
 
-$conn = new mysqli("localhost", "root", "", "sampleDB");
+$conn = new mysqli("cloudcomfinaldb.czcwm0o0uhok.ap-southeast-1.rds.amazonaws.com", "FINALadmin", "cloudcomfinalpassword", "cloudcomfinaldb");
 if ($conn->connect_error) {
     die(json_encode(["error" => "Database connection failed."]));
 }

@@ -15,9 +15,25 @@ $posts = $conn->query("SELECT id, title, content, image_url FROM posts WHERE use
 // Handle Delete Post
 if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['delete_id'])) {
     $delete_id = intval($_POST['delete_id']);
+    
+    $stmt = $conn->prepare("SELECT title FROM posts WHERE id = ?");
+    $stmt->bind_param("i", $delete_id);
+    $stmt->execute();
+    $stmt->bind_result($title);
+    $stmt->fetch();
+    $stmt->close();
+
     $stmt = $conn->prepare("DELETE FROM posts WHERE id = ? AND user_id = ?");
     $stmt->bind_param("ii", $delete_id, $user_id);
     $stmt->execute();
+    if ($stmt->execute()) {
+        // Log the action in audit_logs
+        $logStmt = $conn->prepare("INSERT INTO audit_logs (username, action, timestamp) VALUES (?, ?, NOW())");
+        $action = "Deleted a Post : $title";
+        $logStmt->bind_param("ss", $username, $action);
+        $logStmt->execute();
+        $logStmt->close();
+    }
     $stmt->close();
     header("Location: my_blogs.php");
     exit();

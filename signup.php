@@ -31,7 +31,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $stmt = $conn->prepare("INSERT INTO users (username, password) VALUES (?, ?)");
             $stmt->bind_param("ss", $username, $password_hashed);
             if ($stmt->execute()) {
-                $message = "Signup successful! <a href='login.php'>Sign in</a>";
+                //audit logs logic
+                $user_id = $stmt->insert_id; // Get the newly created user ID
+                $logStmt = $conn->prepare("INSERT INTO audit_logs (user_id, username, action, timestamp) VALUES (?, ?, 'Signup', NOW())");
+                $logStmt->bind_param("is", $user_id, $username);
+                $logStmt->execute();
+                $logStmt->close();
+                $message = "Signup successful!";
                 $message_type = "success";
             } else {
                 $message = "Error: " . $conn->error;
@@ -71,7 +77,9 @@ $conn->close();
                 <input type="password" name="confirm_password" placeholder="Re-enter Password" required>
                 <button type="submit">Sign up</button>
             </form>
-            <button onclick="location.href='login.php'">Sign in</button>
+            <div class="signin-link">
+                <span>Have an account?</span><a href="login.php">Sign in</a>
+            </div>
         </div>
     </div>
 </body>
