@@ -46,8 +46,7 @@ $total_pages = ceil($total_posts / $limit);
                 <a href="view_post.php?id=<?php echo $post['id']; ?>" class="post-link">
                     <div class="post">
                         <?php if (!empty($post['image_url'])) { ?>
-                            <img src="/uploads/<?php echo htmlspecialchars($post['image_url']); ?>" alt="Post Image">
-                        <?php } ?>
+                            <img src="<?php echo htmlspecialchars($post['image_url']); ?>" alt="Post Image">                        <?php } ?>
                         <h3><?php echo htmlspecialchars($post['title']); ?></h3>
                         <p class="post-meta">
                             Posted by <strong><?php echo htmlspecialchars($post['author']); ?></strong>
